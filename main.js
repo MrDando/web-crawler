@@ -1,6 +1,8 @@
 import { normalizeURL } from './crawl.js'
 import { argv } from 'node:process';
 
+import { crawlPage } from './crawl.js'
+
 function main() {
     console.log('--------------------------------------------------------------')
     console.log('Starting web crawler')
@@ -16,14 +18,8 @@ function main() {
     const url = argv[2]
     console.log(`Starting web-crawler with URL: ${url}`)
 
+    const data = crawlPage(url)
   }
   
   main()
   console.log('--------------------------------------------------------------')
-
-
-
-// print process.argv
-// argv.forEach((val, index) => {
-//     console.log(`${index}: ${val}`);
-//   });
