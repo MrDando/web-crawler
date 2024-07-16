@@ -1,9 +1,8 @@
-import { normalizeURL } from './crawl.js'
 import { argv } from 'node:process';
 
 import { crawlPage } from './crawl.js'
 
-function main() {
+async function main() {
     console.log('--------------------------------------------------------------')
     console.log('Starting web crawler')
 
@@ -15,11 +14,14 @@ function main() {
         return
     }
 
-    const url = argv[2]
-    console.log(`Starting web-crawler with URL: ${url}`)
+    const baseURL = argv[2]
+    console.log(`Starting web-crawler with URL: ${baseURL}`)
 
-    const data = crawlPage(url)
+    const pages = await crawlPage(baseURL, baseURL, {})
+
+    for (const page of Object.entries(pages)) {
+        console.log(page)
+    }
   }
   
   main()
-  console.log('--------------------------------------------------------------')
