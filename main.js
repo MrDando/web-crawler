@@ -1,6 +1,7 @@
 import { argv } from 'node:process';
 
 import { crawlPage } from './crawl.js'
+import { printReport } from './report.js'
 
 async function main() {
     console.log('--------------------------------------------------------------')
@@ -19,9 +20,7 @@ async function main() {
 
     const pages = await crawlPage(baseURL, baseURL, {})
 
-    for (const page of Object.entries(pages)) {
-        console.log(page)
-    }
+    printReport(pages)
   }
   
   main()
